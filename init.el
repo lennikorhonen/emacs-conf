@@ -16,6 +16,7 @@
 (add-to-list 'package-pinned-packages '(ruby-mode . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(python-mode . "melpa-stable") t)
 (add-to-list 'package-pinned-packages '(py-autopep8 . "melpa-stable") t)
+(add-to-list 'package-pinned-packages '(neotree . "melpa") t)
 
 
 ;; Load and activate emacs packages. Do this first so that the
@@ -95,10 +96,12 @@
 
     pylint
 
-    elpy))
+    elpy
+
+    neotree))
 
 ;; On OS X, an Emacs instance started from the graphical user
-;; interface will have a different environment than a shell in a
+;; interface will ha\ve a different environment than a shell in a
 ;; terminal window, because OS X does not run a shell during the
 ;; login. Obviously this will lead to unexpected results when
 ;; calling external utilities like make from Emacs.
@@ -112,6 +115,9 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
